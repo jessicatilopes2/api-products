@@ -21,13 +21,21 @@ export class ProductsService {
     }
   }
 
-  /*update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
-  
-
-  remove(id: number) {
-   return `This action removes a #${id} product`;
+  async update(id: number) {
+    try {
+      const response = await axios.put(`${process.env.DUMMY_CONFIG}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-*/
+  async remove(id: number) {
+    try {
+      const response = await axios.delete(`${process.env.DUMMY_CONFIG}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
