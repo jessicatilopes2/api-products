@@ -9,12 +9,12 @@ async function bootstrap() {
     .setTitle('Product Api')
     .setDescription('The Product API description')
     .setVersion('1.0')
-    .addTag('products')
+    .addTag('Products')
     .build();
 
   const document = SwaggerModule.createDocument(products, config);
-  SwaggerModule.setup('api', products, document);
+  SwaggerModule.setup('products', products, document);
 
-  await products.listen(3003);
+  await products.listen(3000);
 }
 bootstrap();
