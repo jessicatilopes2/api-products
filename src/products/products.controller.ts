@@ -6,7 +6,7 @@ import { ProductsService } from './products.service';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get('/products')
+  @Get()
   findAll() {
     return this.productsService.findAll();
   }
