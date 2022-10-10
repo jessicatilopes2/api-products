@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import { UpdateProductDto } from './dto/update-product.dto';
 @Injectable()
 export class ProductsService {
   axios: any;
@@ -21,9 +22,11 @@ export class ProductsService {
     }
   }
 
-  async update(id: number) {
+  async update(id: number, body: UpdateProductDto) {
     try {
-      const response = await axios.put(`${process.env.DUMMY_CONFIG}/${id}`);
+      const response = await axios.put(`${process.env.DUMMY_CONFIG}/${id}`, {
+        name: body.name,
+      });
       return response.data;
     } catch (error) {
       console.log(error);
