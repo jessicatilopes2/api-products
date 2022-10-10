@@ -1,8 +1,11 @@
-import { Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 import { ProductsService } from './products.service';
 
 @Controller('products')
+@ApiTags('Products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
@@ -16,8 +19,8 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string) {
-    return this.productsService.update(+id);
+  update(@Param('id') id: string, @Body() body: UpdateProductDto) {
+    return this.productsService.update(+id, body);
   }
 
   @Delete(':id')
